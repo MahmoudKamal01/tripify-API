@@ -1,9 +1,9 @@
-import User from '../models/User.js';
+const User = require("../models/User.js");
 // services/userService.js
-import TripPlan from '../models/TripPlan.js'; // Adjust path as needed
-import bcrypt from 'bcryptjs/dist/bcrypt.js';
+const TripPlan = require("../models/TripPlan.js"); // Adjust path as needed
+const bcrypt = require("bcryptjs/dist/bcrypt.js");
 
-export const getUserByIdService = async (id) => {
+const getUserByIdService = async (id) => {
   try {
     const user = await User.findById(id).exec();
     return user;
@@ -12,7 +12,7 @@ export const getUserByIdService = async (id) => {
   }
 };
 
-export const addTripPlanToUser = async (userId, tripId) => {
+const addTripPlanToUser = async (userId, tripId) => {
   try {
     // Find the user and add tripId to the tripPlanIds array
     const user = await User.findByIdAndUpdate(
@@ -22,7 +22,7 @@ export const addTripPlanToUser = async (userId, tripId) => {
     ).exec();
 
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     return user;
@@ -31,28 +31,28 @@ export const addTripPlanToUser = async (userId, tripId) => {
   }
 };
 
-export const deleteUserService = async (userId) => {
+const deleteUserService = async (userId) => {
   try {
     // Find and delete the user by ID
     const result = await User.findByIdAndDelete(userId).exec();
 
     if (!result) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
-    return 'User deleted successfully';
+    return "User deleted successfully";
   } catch (error) {
     throw new Error(`Error deleting user: ${error.message}`);
   }
 };
 
-export const getTripsByUserIdService = async (userId) => {
+const getTripsByUserIdService = async (userId) => {
   try {
     // Find the user by userId
     const user = await User.findById(userId).exec();
 
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
 
     // Find all trip plans where their IDs match the user's tripPlanIds
@@ -68,14 +68,11 @@ export const getTripsByUserIdService = async (userId) => {
   }
 };
 
-export const updateUserDetailsService = async (
-  userId,
-  { newUsername, newEmail }
-) => {
+const updateUserDetailsService = async (userId, { newUsername, newEmail }) => {
   try {
     const user = await User.findById(userId).exec();
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
     user.username = newUsername || user.username;
     user.email = newEmail || user.email;
@@ -87,11 +84,11 @@ export const updateUserDetailsService = async (
 };
 
 // Update password
-export const updateUserPasswordService = async (userId, newPassword) => {
+const updateUserPasswordService = async (userId, newPassword) => {
   try {
     const user = await User.findById(userId).exec();
     if (!user) {
-      throw new Error('User not found');
+      throw new Error("User not found");
     }
     user.password = await bcrypt.hash(newPassword, 12);
     await user.save();
@@ -99,4 +96,13 @@ export const updateUserPasswordService = async (userId, newPassword) => {
   } catch (error) {
     throw new Error(`Error updating user password: ${error.message}`);
   }
+};
+
+module.exports = {
+  getUserByIdService,
+  addTripPlanToUser,
+  deleteUserService,
+  getTripsByUserIdService,
+  updateUserDetailsService,
+  updateUserPasswordService,
 };

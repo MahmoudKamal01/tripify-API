@@ -1,9 +1,9 @@
-import jwt from 'jsonwebtoken';
+const jwt = require("jsonwebtoken");
 
 const authenticateToken = (req, res, next) => {
   // Extract the token from headers or query parameters
-  const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // Bearer token
+  const authHeader = req.headers["authorization"];
+  const token = authHeader && authHeader.split(" ")[1]; // Bearer token
 
   if (token == null) return res.sendStatus(401); // Unauthorized if no token
 
@@ -14,4 +14,4 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-export default authenticateToken;
+module.exports = authenticateToken;

@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+const jwt = require("jsonwebtoken");
 
 const getUserIdFromToken = (token) => {
   try {
@@ -6,9 +6,9 @@ const getUserIdFromToken = (token) => {
     console.log(decoded);
     return decoded.userId;
   } catch (error) {
-    console.error('Error verifying token:', error.message);
+    console.error("Error verifying token:", error.message);
     return null;
   }
 };
 
-export default getUserIdFromToken;
+module.exports = getUserIdFromToken;

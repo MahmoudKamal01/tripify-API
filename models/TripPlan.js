@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 // Define the schema for a place
@@ -42,6 +42,6 @@ const tripPlanSchema = new Schema({
   places: [placeSchema], // Array of places
 });
 
-const TripPlan = mongoose.model('TripPlan', tripPlanSchema);
+const TripPlan = mongoose.model("TripPlan", tripPlanSchema);
 
-export default TripPlan;
+module.exports = TripPlan;

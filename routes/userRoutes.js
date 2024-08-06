@@ -1,24 +1,24 @@
 // routes/userRoutes.js
-import express from 'express';
-import authenticateToken from '../middlewares/authenticateToken.js';
-import {
+const express = require("express");
+const authenticateToken = require("../middlewares/authenticateToken.js");
+const {
   getUserTripPlansByUserIdHandler,
   updateUserNameAndEmailHandler,
   updateUserPasswordHandler,
-} from '../controllers/userController.js';
+} = require("../controllers/userController.js");
 
 const router = express.Router();
 
 // Update username and email
-router.put('/update-profile', authenticateToken, updateUserNameAndEmailHandler);
+router.put("/update-profile", authenticateToken, updateUserNameAndEmailHandler);
 
 // Update password
-router.put('/update-password', authenticateToken, updateUserPasswordHandler);
+router.put("/update-password", authenticateToken, updateUserPasswordHandler);
 
 //get user trip plans
 router.get(
-  '/:id/trip-plans',
+  "/:id/trip-plans",
   authenticateToken,
   getUserTripPlansByUserIdHandler
 );
-export default router;
+module.exports = router;

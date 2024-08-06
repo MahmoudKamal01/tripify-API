@@ -1,6 +1,6 @@
 // index.js
-import 'dotenv/config';
-import app from './app.js';
+require("dotenv/config");
+const app = require("./app.js");
 
 // Load environment variables from .env file
 

@@ -1,15 +1,15 @@
-import { chatSession } from '../services/AiModal.js'; // Adjust import path as needed
-import getPlaceDetails from '../services/placeServices.js';
-import {
+const { chatSession } = require("../services/AiModal.js"); // Adjust path as needed
+const getPlaceDetails = require("../services/placeServices.js");
+const {
   addTripPlanToDbService,
   deleteTripPlanByIdService,
   getTripPlanByIdService,
-} from '../services/tripServices.js';
-import { addTripPlanToUser } from '../services/userServices.js';
-import getToken from '../utils/getToken.js';
-import getUserIdFromToken from '../utils/getUserIdFromToken.js';
+} = require("../services/tripServices.js");
+const { addTripPlanToUser } = require("../services/userServices.js");
+const getToken = require("../utils/getToken.js");
+const getUserIdFromToken = require("../utils/getUserIdFromToken.js");
 
-export const createTripPlanHandler = async (req, res) => {
+const createTripPlanHandler = async (req, res) => {
   try {
     const { location, totalDays, groupSize, budgetLevel } = req.body;
 
@@ -18,7 +18,7 @@ export const createTripPlanHandler = async (req, res) => {
     const result = await chatSession.sendMessage(message);
 
     if (!result || !result.response || !result.response.text) {
-      throw new Error('Invalid response format from chatSession');
+      throw new Error("Invalid response format from chatSession");
     }
 
     let parsedResult;
@@ -26,14 +26,14 @@ export const createTripPlanHandler = async (req, res) => {
       parsedResult = JSON.parse(result.response.text());
     } catch (parseError) {
       console.error(
-        'Failed to parse response text as JSON:',
+        "Failed to parse response text as JSON:",
         parseError.message
       );
-      throw new Error('Failed to parse response text as JSON');
+      throw new Error("Failed to parse response text as JSON");
     }
 
     if (!Array.isArray(parsedResult)) {
-      throw new Error('Parsed result is not an array');
+      throw new Error("Parsed result is not an array");
     }
 
     const allPlaceNames = parsedResult.map((item) => item.place);
@@ -54,7 +54,7 @@ export const createTripPlanHandler = async (req, res) => {
       return {
         ...place,
         ...detailedInfo,
-        isHotel: place.place && place.place.toLowerCase().includes('hotel'),
+        isHotel: place.place && place.place.toLowerCase().includes("hotel"),
       };
     });
 
@@ -67,12 +67,12 @@ export const createTripPlanHandler = async (req, res) => {
 
     res.json({ trip_plan_id: savedTripPlan._id, ...combinedData });
   } catch (error) {
-    console.error('Error generating trip plan:', error.message);
-    res.status(500).send('Error generating trip plan');
+    console.error("Error generating trip plan:", error.message);
+    res.status(500).send("Error generating trip plan");
   }
 };
 
-export const getTripPlanHandler = async (req, res) => {
+const getTripPlanHandler = async (req, res) => {
   try {
     const { id } = req.params; // Assuming you pass the planId as a route parameter
     const plan = await getTripPlanByIdService(id);
@@ -80,27 +80,33 @@ export const getTripPlanHandler = async (req, res) => {
     if (plan) {
       res.json(plan);
     } else {
-      res.status(404).json({ message: 'Trip plan not found' });
+      res.status(404).json({ message: "Trip plan not found" });
     }
   } catch (error) {
-    console.error('Error fetching trip plan:', error.message);
-    res.status(500).json({ message: 'Error fetching trip plan' });
+    console.error("Error fetching trip plan:", error.message);
+    res.status(500).json({ message: "Error fetching trip plan" });
   }
 };
 
-export const deleteTripPlanHandler = async (req, res) => {
+const deleteTripPlanHandler = async (req, res) => {
   try {
     const { id } = req.params; // Extract trip plan ID from URL parameters
     const deletedTripPlan = await deleteTripPlanByIdService(id); // Call the service to delete the plan
 
     if (!deletedTripPlan) {
-      return res.status(404).json({ message: 'Trip plan not found' });
+      return res.status(404).json({ message: "Trip plan not found" });
     }
 
     res
       .status(200)
-      .json({ message: 'Trip plan deleted successfully', deletedTripPlan });
+      .json({ message: "Trip plan deleted successfully", deletedTripPlan });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+};
+
+module.exports = {
+  getTripPlanHandler,
+  createTripPlanHandler,
+  deleteTripPlanHandler,
 };

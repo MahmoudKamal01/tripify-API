@@ -1,18 +1,18 @@
-import axios from 'axios';
-import { GOOGLE_PLACE_API_KEY } from '../configs/keys.js';
+const axios = require("axios");
+const { GOOGLE_PLACE_API_KEY } = require("../configs/keys.js");
 
 const getPlaceDetailsController = async (req, res) => {
   const { searchQuery } = req.body;
 
   // Validate input
   if (!searchQuery) {
-    return res.status(400).json({ error: 'searchQuery is required' });
+    return res.status(400).json({ error: "searchQuery is required" });
   }
 
   try {
     // Search for places using text query
     const searchResponse = await axios.get(
-      'https://maps.googleapis.com/maps/api/place/textsearch/json',
+      "https://maps.googleapis.com/maps/api/place/textsearch/json",
       {
         params: {
           query: searchQuery,
@@ -29,7 +29,7 @@ const getPlaceDetailsController = async (req, res) => {
 
       // Get detailed information about the place
       const detailsResponse = await axios.get(
-        'https://maps.googleapis.com/maps/api/place/details/json',
+        "https://maps.googleapis.com/maps/api/place/details/json",
         {
           params: {
             place_id: placeId,
@@ -43,7 +43,7 @@ const getPlaceDetailsController = async (req, res) => {
       // Extract working hours
       const workingHours = place.opening_hours
         ? place.opening_hours.weekday_text
-        : 'No working hours available';
+        : "No working hours available";
 
       const imageUrl = place.photos
         ? `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${place.photos[0].photo_reference}&key=${process.env.GOOGLE_PLACE_API_KEY}`
@@ -60,14 +60,14 @@ const getPlaceDetailsController = async (req, res) => {
         priceLevel: place.price_level,
       });
     } else {
-      res.status(404).json({ error: 'No places found' });
+      res.status(404).json({ error: "No places found" });
     }
   } catch (error) {
-    console.error('Error fetching place details:', error);
+    console.error("Error fetching place details:", error);
     res
       .status(500)
-      .json({ error: 'Error fetching place details from Google Places API' });
+      .json({ error: "Error fetching place details from Google Places API" });
   }
 };
 
-export default getPlaceDetailsController;
+module.exports = getPlaceDetailsController;

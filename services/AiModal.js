@@ -1,15 +1,11 @@
-import {
-  GoogleGenerativeAI,
-  HarmCategory,
-  HarmBlockThreshold,
-} from '@google/generative-ai';
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const apiKey = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenerativeAI(apiKey);
 
 const model = genAI.getGenerativeModel({
-  model: 'gemini-1.5-flash',
-  systemInstruction: 'i want response to have json only',
+  model: "gemini-1.5-flash",
+  systemInstruction: "i want response to have json only",
 });
 
 const generationConfig = {
@@ -17,9 +13,11 @@ const generationConfig = {
   topP: 0.95,
   topK: 64,
   maxOutputTokens: 8192,
-  responseMimeType: 'application/json',
+  responseMimeType: "application/json",
 };
 
-export const chatSession = model.startChat({
+const chatSession = model.startChat({
   generationConfig,
 });
+
+module.exports = { chatSession };

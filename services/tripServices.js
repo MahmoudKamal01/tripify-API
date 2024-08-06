@@ -1,7 +1,7 @@
 // services/tripService.js
-import TripPlan from '../models/TripPlan.js'; // Adjust path as needed
+const TripPlan = require("../models/TripPlan.js"); // Adjust path as needed
 
-export const getTripPlanByIdService = async (planId) => {
+const getTripPlanByIdService = async (planId) => {
   try {
     const plan = await TripPlan.findById(planId).exec();
     return plan;
@@ -10,7 +10,7 @@ export const getTripPlanByIdService = async (planId) => {
   }
 };
 
-export const addTripPlanToDbService = async (tripPlanData) => {
+const addTripPlanToDbService = async (tripPlanData) => {
   try {
     const newTripPlan = await TripPlan.create(tripPlanData);
     return newTripPlan;
@@ -19,7 +19,7 @@ export const addTripPlanToDbService = async (tripPlanData) => {
   }
 };
 
-export const updateTripPlanByIdService = async (planId, updateData) => {
+const updateTripPlanByIdService = async (planId, updateData) => {
   try {
     const updatedTripPlan = await TripPlan.findByIdAndUpdate(
       planId,
@@ -31,27 +31,34 @@ export const updateTripPlanByIdService = async (planId, updateData) => {
     ).exec();
 
     if (!updatedTripPlan) {
-      throw new Error('Trip plan not found');
+      throw new Error("Trip plan not found");
     }
 
-    console.log('Updated TripPlan ID:', updatedTripPlan._id); // Log the ID
+    console.log("Updated TripPlan ID:", updatedTripPlan._id); // Log the ID
     return updatedTripPlan;
   } catch (error) {
     throw new Error(`Error updating trip plan: ${error.message}`);
   }
 };
 
-export const deleteTripPlanByIdService = async (planId) => {
+const deleteTripPlanByIdService = async (planId) => {
   try {
     const deletedTripPlan = await TripPlan.findByIdAndDelete(planId).exec();
 
     if (!deletedTripPlan) {
-      throw new Error('Trip plan not found');
+      throw new Error("Trip plan not found");
     }
 
-    console.log('Deleted TripPlan ID:', deletedTripPlan._id); // Log the ID
+    console.log("Deleted TripPlan ID:", deletedTripPlan._id); // Log the ID
     return deletedTripPlan;
   } catch (error) {
     throw new Error(`Error deleting trip plan: ${error.message}`);
   }
+};
+
+module.exports = {
+  getTripPlanByIdService,
+  addTripPlanToDbService,
+  updateTripPlanByIdService,
+  deleteTripPlanByIdService,
 };

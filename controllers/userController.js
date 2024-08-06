@@ -1,9 +1,9 @@
 // controllers/userController.js
-import { getTripsByUserIdService } from '../services/userServices.js'; // Adjust path as needed
-import getToken from '../utils/getToken.js';
-import getUserIdFromToken from '../utils/getUserIdFromToken.js';
+const { getTripsByUserIdService } = require("../services/userServices.js"); // Adjust path as needed
+const getToken = require("../utils/getToken.js");
+const getUserIdFromToken = require("../utils/getUserIdFromToken.js");
 
-export const getUserTripPlansByUserIdHandler = async (req, res) => {
+const getUserTripPlansByUserIdHandler = async (req, res) => {
   const { id } = req.params; // Extract userId from route parameters
   try {
     // Call the service function to get trips for the user
@@ -12,12 +12,12 @@ export const getUserTripPlansByUserIdHandler = async (req, res) => {
     // Send the trips data as the response
     res.json(trips);
   } catch (error) {
-    console.error('Error getting user trips:', error.message);
+    console.error("Error getting user trips:", error.message);
     res.status(500).json({ error: error.message });
   }
 };
 
-export const updateUserNameAndEmailHandler = async (req, res) => {
+const updateUserNameAndEmailHandler = async (req, res) => {
   const { newUsername, newEmail } = req.body;
   const userId = getUserIdFromToken(getToken(req));
 
@@ -27,7 +27,7 @@ export const updateUserNameAndEmailHandler = async (req, res) => {
       newEmail,
     });
     res.json({
-      message: 'User details updated successfully',
+      message: "User details updated successfully",
       user: updatedUser,
     });
   } catch (error) {
@@ -35,15 +35,21 @@ export const updateUserNameAndEmailHandler = async (req, res) => {
   }
 };
 
-export const updateUserPasswordHandler = async (req, res) => {
+const updateUserPasswordHandler = async (req, res) => {
   const { newPassword } = req.body;
   const userId = getUserIdFromToken(getToken(req));
 
   try {
     // Hash the new password before updating
     const updatedUser = await updateUserPasswordService(userId, newPassword);
-    res.json({ message: 'Password updated successfully', user: updatedUser });
+    res.json({ message: "Password updated successfully", user: updatedUser });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+};
+
+module.exports = {
+  getUserTripPlansByUserIdHandler,
+  updateUserNameAndEmailHandler,
+  updateUserPasswordHandler,
 };

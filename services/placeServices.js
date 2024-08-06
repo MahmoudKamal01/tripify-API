@@ -1,9 +1,9 @@
-import axios from 'axios';
+const axios = require("axios");
 
 const getPlaceDetails = async (placeName, token) => {
   try {
     const response = await axios.post(
-      'http://127.0.0.1:3000/get-place-details',
+      "http://127.0.0.1:3000/get-place-details",
       {
         searchQuery: placeName,
       },
@@ -20,4 +20,4 @@ const getPlaceDetails = async (placeName, token) => {
   }
 };
 
-export default getPlaceDetails;
+module.exports = getPlaceDetails;

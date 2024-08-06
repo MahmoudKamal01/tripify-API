@@ -1,7 +1,7 @@
-import passport from 'passport';
-import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import User from '../models/User.js'; // Adjust the path according to your project structure
-import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from './keys.js';
+const passport = require("passport");
+const { Strategy: GoogleStrategy } = require("passport-google-oauth20");
+const User = require("../models/User.js"); // Adjust the path according to your project structure
+const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = require("./keys.js");
 
 // Configure Passport to use Google OAuth 2.0 Strategy
 passport.use(
@@ -9,7 +9,7 @@ passport.use(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: 'http://localhost:3000/auth/google/callback', // Adjust to your callback URL
+      callbackURL: "http://localhost:3000/auth/google/callback", // Adjust to your callback URL
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
@@ -52,4 +52,4 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-export default passport;
+module.exports = passport;
