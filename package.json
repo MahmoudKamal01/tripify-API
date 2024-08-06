@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "build":"npm run build"
+    "build": "babel src -d lib"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,9 @@
     "passport-google-oidc": "^0.1.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.3",
     "morgan": "^1.10.0",
     "nodemon": "^3.1.4",
     "prettier": "^3.3.3"
