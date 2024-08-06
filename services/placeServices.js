@@ -3,7 +3,7 @@ const axios = require("axios");
 const getPlaceDetails = async (placeName, token) => {
   try {
     const response = await axios.post(
-      "http://127.0.0.1:3000/get-place-details",
+      "https://etqan-abet-assessment-tool.onrender.com/get-place-details",
       {
         searchQuery: placeName,
       },
