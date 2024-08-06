@@ -1,0 +1,66 @@
+{
+  "trendyPlaces": [
+    {
+      "place": "Santorini [Greece]",
+      "address": "Santorini, Cyclades, Greece",
+      "rating": 4.8,
+      "imageUrl": "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcSzJRY1khtfAGMUBk6XpWBeRXM4Cd9EMrIjEHICmYx06dQl4PpBPEfSWX7i8AyTmee5e0F9gqBtiXCay99_SyN2TEOmECawxCxssRC7Qg"
+    },
+    {
+      "place": "Machu Picchu [Peru]",
+      "address": "Machu Picchu, Cusco Region, Peru",
+      "rating": 4.9,
+      "imageUrl": "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcROGYtaOWrsqOKZUGHOiYonAiyoTr7AOPtFBeTL_1YuIS3rJBa8_zGem4AKGtSporWLy78j9okImvNU6mKcOQ20aDVZTngbxiqH_vN8PA"
+    },
+    {
+      "place": "Kyoto [Japan]",
+      "address": "Kyoto, Japan",
+      "rating": 4.7,
+      "imageUrl": "https://lh5.googleusercontent.com/p/AF1QipNKdHSpeIm6rHGdtXRByXdpb6hjLHRGf8S69_8z=w675-h390-n-k-no"
+    },
+    {
+      "place": "Great Wall of China [China]",
+      "address": "Beijing, China",
+      "rating": 4.8,
+      "imageUrl": "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcR9EaGSWB1-fsEEzo66iy3nfgCyh9D-WdF7qAljD9RlrKv6StU6mVGSsn3cCuHIOrNusDmKwjD-Hu0797p9T5MAfxrQO5f52TZG10iNcA"
+    },
+    {
+      "place": "Sydney Opera House [Australia]",
+      "address": "Bennelong Point, Sydney NSW 2000, Australia",
+      "rating": 4.9,
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcSVY5wHb_2TKNtrlOHN65FKuK4xCHxW-eZ1RkJRitANFzz82BfkK0SLSfphTS8DATIny2YPSFMjgF9DgY56gZe_XaxPyc7leJZb59vjzw"
+    }
+  ],
+  "topPlaces": [
+    {
+      "place": "Eiffel Tower [France]",
+      "address": "Av. Gustave Eiffel, 75007 Paris, France",
+      "rating": 4.7,
+      "imageUrl": "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcR_8zU3hzHcSVur3HaWOAt5lSN9Dchxl8ccj12TSihCCp6ltIvOJWk56g8ohco0LSfbI6fMT5p_TTWYYOA2jmCDIWAhBews2DZsiDrWuw"
+    },
+    {
+      "place": "Colosseum [Italy]",
+      "address": "Piazza del Colosseo, 1, 00184 Roma RM, Italy",
+      "rating": 4.6,
+      "imageUrl": "https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcRA581L2GR1mdq93hNKE1IhBUhD8NqyH0yVVGAuThu92fOiSZYzWnZbfVZPIoBluH6XQMvOD2o9OQ8URjHR5lJCKvQvzLfgGPqTNTC-rw"
+    },
+    {
+      "place": "Taj Mahal [India]",
+      "address": "Dharmapuri, Forest Colony, Tajganj, Agra, Uttar Pradesh 282001, India",
+      "rating": 4.8,
+      "imageUrl": "https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcS1TyNH7XWWo-fnd3jDPXSOsHW0oMPkOkI73ThDi9_5PC3AXpIclxIt8q8c8_sH_0Fn3NXPB_9LN0Fo5YB1IPK4KSE1fbHVLaVXf6FrOQ"
+    },
+    {
+      "place": "Statue of Liberty [USA]",
+      "address": "New York, NY 10004, USA",
+      "rating": 4.7,
+      "imageUrl": "https://www.telegraph.co.uk/content/dam/travel/2021/09/28/TELEMMGLPICT000272822890_trans_NvBQzQNjv4BqgsaO8O78rhmZrDxTlQBjdLdu0TL-Cg_AMOUqySXmFgU.jpeg?imwidth=960"
+    },
+    {
+      "place": "Christ the Redeemer [Brazil]",
+      "address": "Parque Lage - Jardim Botânico, Rio de Janeiro - RJ, 22241-125, Brazil",
+      "rating": 4.9,
+      "imageUrl": "https://cdn.britannica.com/54/150754-050-5B93A950/statue-Christ-the-Redeemer-Rio-de-Janeiro.jpg"
+    }
+  ]
+}

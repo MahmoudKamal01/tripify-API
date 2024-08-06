@@ -1,0 +1,39 @@
+{
+  "name": "tripify-api",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MahmoudKamal01/tripify-API.git"
+  },
+  "author": "MahmoudKamal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MahmoudKamal01/tripify-API/issues"
+  },
+  "homepage": "https://github.com/MahmoudKamal01/tripify-API#readme",
+  "dependencies": {
+    "@google/generative-ai": "^0.16.0",
+    "axios": "^1.7.3",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.5.2",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-google-oidc": "^0.1.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.3"
+  }
+}
