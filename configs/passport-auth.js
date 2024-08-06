@@ -9,7 +9,8 @@ passport.use(
     {
       clientID: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-      callbackURL: "http://localhost:3000/auth/google/callback", // Adjust to your callback URL
+      callbackURL:
+        "https://etqan-abet-assessment-tool.onrender.com/auth/google/callback", // Adjust to your callback URL
     },
     async (accessToken, refreshToken, profile, done) => {
       try {
