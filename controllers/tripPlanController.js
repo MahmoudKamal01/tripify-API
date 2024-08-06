@@ -68,7 +68,7 @@ const createTripPlanHandler = async (req, res) => {
     res.json({ trip_plan_id: savedTripPlan._id, ...combinedData });
   } catch (error) {
     console.error("Error generating trip plan:", error.message);
-    res.status(500).send("Error generating trip plan");
+    res.status(500).send(`Error generating trip plan: ${error.message}`);
   }
 };
 
