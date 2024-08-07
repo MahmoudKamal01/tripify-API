@@ -38,6 +38,12 @@ app.get("/protected", authenticateToken, (req, res) => {
   });
 });
 
+app.get("/test", (req, res) => {
+  res.json({
+    message: "Hello, this is test endpoint",
+  });
+});
+
 connectToMongoDB();
 
 module.exports = app;
